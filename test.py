@@ -1,5 +1,5 @@
 import pytest
-from scp import *
+from scp import soup, get_html
 
 
 URL = "https://wbawakate.connpass.com/event/"
@@ -8,7 +8,7 @@ html_file = "index.html"
 
 def test_get_html():
     html = get_html(URL)
-    assert isinstance(html , str), "html isn't str: {}".format(type(html))
+    assert isinstance(html, str), "html isn't str: {}".format(type(html))
     return html
 
 
