@@ -1,5 +1,7 @@
 import requests
+import pandas as pd
 from bs4 import BeautifulSoup
+from pathlib import Path
 
 
 PAGEs = ["https://wbawakate.connpass.com/event/",
@@ -42,12 +44,14 @@ def get_events(pages):
 
 
 def dump_events(events, filename):
-    pass
+    isinstance(filename, Path)
+    df = pd.DataFrame(events)
+    df.to_csv(filename, header=["date", "event"], index=False)
 
 
 def main():
     events = get_events(PAGEs)
-    dump_events(events, "events.txt")
+    dump_events(events, Path("events.csv"))
 
 
 if __name__ == "__main__":
