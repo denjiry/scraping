@@ -37,7 +37,7 @@ def get_events(pages):
     date_event = []
     for url in pages:
         pairs = get_pair_page(url)
-        date_event.append(pairs)
+        date_event += pairs
     return date_event
 
 
