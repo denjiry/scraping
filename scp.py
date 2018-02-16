@@ -27,10 +27,15 @@ def get_class_text(soup, class_):
     return list_text
 
 
+def clean_list_date(list_date):
+    pass
+
+
 def get_pair_page(URL):
     html = get_html(URL)
     sp = soup(html)
     list_date = get_class_text(sp, "schedule")
+    list_date = clean_list_date(list_date)
     list_title = get_class_text(sp, "event_title")
     return list(zip(list_date, list_title))
 

@@ -29,3 +29,11 @@ def test_get_class_text():
     assert isinstance(list_text, list)
     assert isinstance(list_text[0], str)
     return list_text
+
+
+def test_clean_list_date():
+    from scp import clean_list_date
+    dirty_list = ['\n終了\n      2018/01/13（土） 17:30〜\n      \n\n']
+    clean_list = clean_list_date(dirty_list)
+    assert clean_list == "2018/01/13（土）"
+    return clean_list
