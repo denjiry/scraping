@@ -1,4 +1,5 @@
 import requests
+import re
 import pandas as pd
 from bs4 import BeautifulSoup
 from pathlib import Path
@@ -28,7 +29,12 @@ def get_class_text(soup, class_):
 
 
 def clean_list_date(list_date):
-    pass
+    ret = []
+    pattern = "201[78]/[01][0-9]/[0-3][0-9] *（.）"
+    for dirty in list_date:
+        match = re.search(pattern, dirty)
+        ret.append(match.group(0))
+    return ret
 
 
 def get_pair_page(URL):
