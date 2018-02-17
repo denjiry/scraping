@@ -33,6 +33,9 @@ def clean_list_date(list_date):
     pattern = "201[78]/[01][0-9]/[0-3][0-9] *（.）"
     for dirty in list_date:
         match = re.search(pattern, dirty)
+        if match is None:
+            continue
+        assert match is not None, "dirty: {}".format(dirty)
         ret.append(match.group(0))
     return ret
 
